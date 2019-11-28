@@ -1,0 +1,73 @@
+{
+  "name": "angularjs-fresh-start",
+  "version": "0.0.1",
+  "description": "Fresh Start - AngularJS",
+  "main": "public/index.html",
+  "scripts": {
+    "start": "npm run clear:dist && node --max_old_space_size=2048 ./node_modules/rollup/dist/bin/rollup -c rollup.config.dev.js --watch",
+    "build": "npm run clear:dist && node --max_old_space_size=2048 ./node_modules/rollup/dist/bin/rollup -c rollup.config.prod.js",
+    "lint": "npm run lint:eslint && npm run lint:prettier",
+    "format": "npm run format:eslint && npm run format:prettier",
+    "clear:dist": "(rm -rf dist || rd -r dist) && mkdir dist",
+    "lint:eslint": "eslint --ext .js,.html .",
+    "format:eslint": "eslint --ext .js,.html . --fix",
+    "lint:prettier": "prettier '**/*.js' --list-different || (echo '↑↑ these files are not prettier formatted ↑↑' && exit 1)",
+    "format:prettier": "prettier '**/*.js' --write"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "prettier --write",
+      "git add ."
+    ]
+  },
+  "author": {
+    "email": "email@thiagodesouza.com.br",
+    "name": "Thiago de Souza",
+    "url": "https://www.thiagodesouza.com.br"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "@babel/core": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "@open-wc/eslint-config": "^1.3.0",
+    "@open-wc/prettier-config": "^0.1.12",
+    "eslint": "^6.7.1",
+    "fast-async": "^6.3.8",
+    "husky": "^3.1.0",
+    "lint-staged": "^9.4.3",
+    "node-sass": "^4.13.0",
+    "postcss-url": "^8.0.0",
+    "prettier": "^1.19.1",
+    "rollup": "^1.27.5",
+    "rollup-plugin-analyzer": "^3.2.2",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-browsersync": "^1.0.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-copy": "^3.1.0",
+    "rollup-plugin-filesize": "^6.2.1",
+    "rollup-plugin-html-scaffold": "^0.1.2",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-postcss": "^2.0.3",
+    "rollup-plugin-progress": "^1.1.1",
+    "rollup-plugin-replace": "^2.2.0",
+    "rollup-plugin-string": "^3.0.0",
+    "rollup-plugin-uglify": "^6.0.3"
+  },
+  "dependencies": {
+    "@uirouter/angularjs": "^1.0.23",
+    "angular": "^1.7.9",
+    "angular-animate": "^1.7.9",
+    "angular-aria": "^1.7.9",
+    "angular-messages": "^1.7.9",
+    "angular-resource": "^1.7.9",
+    "angular-sanitize": "^1.7.9",
+    "ng-redux": "^4.4.1",
+    "redux": "^4.0.4"
+  }
+}
